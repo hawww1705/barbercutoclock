@@ -8,10 +8,10 @@
 
 /* ── Design Tokens ── */
 :root {
-  --bg:           #303036;
-  --bg-primary:   #26262c;
-  --bg-secondary: #1c1c22;
-  --bg-card:      #3c3c44;
+  --bg:           #1a1a1c;
+  --bg-primary:   #151517;
+  --bg-secondary: #222225;
+  --bg-card:      #202023;
   --gold:         #C9A227;
   --gold-light:   #E8C547;
   --gold-dim:     #a07d18;
