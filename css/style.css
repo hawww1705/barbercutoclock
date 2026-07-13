@@ -58,7 +58,6 @@ body {
   font-weight: 400;
   line-height: 1.65;
   overflow-x: hidden;
-  cursor: none;
 }
 
 body.loading {
@@ -81,45 +80,8 @@ ul { list-style: none; }
 button {
   border: none;
   background: none;
-  cursor: none;
+  cursor: pointer;
   font-family: inherit;
-}
-
-/* ── Custom Cursor ── */
-#cursor {
-  position: fixed;
-  top: 0; left: 0;
-  width: 10px; height: 10px;
-  background: var(--gold);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 99999;
-  transform: translate(-50%, -50%);
-  transition: width 0.2s, height 0.2s, background 0.2s, opacity 0.2s;
-  mix-blend-mode: normal;
-}
-
-#cursor-ring {
-  position: fixed;
-  top: 0; left: 0;
-  width: 36px; height: 36px;
-  border: 1.5px solid rgba(201,162,39,0.6);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 99998;
-  transform: translate(-50%, -50%);
-  transition: all 0.12s ease;
-}
-
-#cursor.cursor-hover {
-  width: 18px; height: 18px;
-  background: var(--gold-light);
-}
-
-#cursor-ring.cursor-hover {
-  width: 54px; height: 54px;
-  border-color: var(--gold);
-  background: rgba(201,162,39,0.06);
 }
 
 /* ── Scroll Progress Bar ── */
@@ -361,7 +323,7 @@ button {
   transition: all var(--transition);
   position: relative;
   overflow: hidden;
-  cursor: none;
+  
 }
 
 .btn::after {
@@ -1154,7 +1116,7 @@ button {
   position: relative;
   overflow: hidden;
   transition: all var(--transition);
-  cursor: none;
+  
 }
 
 .service-card::after {
@@ -1278,7 +1240,7 @@ button {
   border-radius: var(--radius-md);
   overflow: hidden;
   position: relative;
-  cursor: none;
+  
 }
 
 .gallery-item img {
@@ -1372,7 +1334,7 @@ button {
   justify-content: center;
   font-size: 1.2rem;
   color: var(--white);
-  cursor: none;
+  
   transition: background var(--transition-fast);
 }
 
@@ -1390,7 +1352,7 @@ button {
   justify-content: center;
   color: var(--white);
   font-size: 1.2rem;
-  cursor: none;
+  
   transition: background var(--transition-fast);
 }
 
@@ -1507,7 +1469,7 @@ button {
   width: 8px; height: 8px;
   border-radius: 50%;
   background: rgba(255,255,255,0.2);
-  cursor: none;
+  
   transition: all var(--transition-fast);
 }
 
@@ -1533,7 +1495,7 @@ button {
   justify-content: center;
   color: var(--gold);
   font-size: 1rem;
-  cursor: none;
+  
   transition: all var(--transition-fast);
 }
 
@@ -1567,7 +1529,7 @@ button {
   border-radius: var(--radius-sm);
   overflow: hidden;
   position: relative;
-  cursor: none;
+  
 }
 
 .ig-item img {
@@ -1682,7 +1644,7 @@ button {
   font-weight: 700;
   box-shadow: 0 8px 40px rgba(37,211,102,0.35);
   transition: all var(--transition);
-  cursor: none;
+  
 }
 
 .booking-wa-btn:hover {
@@ -1797,7 +1759,7 @@ button {
   padding: 28px 24px;
   text-align: center;
   transition: border-color var(--transition), box-shadow var(--transition), transform var(--transition);
-  cursor: none;
+  
   text-decoration: none;
   display: block;
 }
@@ -1949,7 +1911,7 @@ button {
   font-size: 1rem;
   color: var(--gray-mid);
   transition: all var(--transition-fast);
-  cursor: none;
+  
 }
 
 .footer-social-link:hover {
@@ -2060,7 +2022,7 @@ button {
   align-items: center;
   justify-content: center;
   box-shadow: 0 4px 20px rgba(37,211,102,0.4);
-  cursor: none;
+  
   transition: transform var(--transition), box-shadow var(--transition);
   animation: waPulse 2.5s ease-in-out infinite;
 }
@@ -2119,7 +2081,7 @@ button {
   justify-content: center;
   color: var(--gold);
   font-size: 1.1rem;
-  cursor: none;
+  
   transition: all var(--transition);
   opacity: 0;
   transform: translateY(10px);
@@ -2303,3 +2265,4 @@ button {
     font-size: 4rem;
   }
 }
+

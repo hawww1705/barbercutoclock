@@ -20,58 +20,6 @@ window.addEventListener('load', () => {
   }, 2000);
 });
 
-/* ─────────────────────────────────────────────
-   CUSTOM CURSOR
-───────────────────────────────────────────── */
-const cursor     = document.getElementById('cursor');
-const cursorRing = document.getElementById('cursor-ring');
-
-let cursorX = 0, cursorY = 0;
-let ringX   = 0, ringY   = 0;
-let rafCursor;
-
-if (cursor && cursorRing) {
-  document.addEventListener('mousemove', (e) => {
-    cursorX = e.clientX;
-    cursorY = e.clientY;
-    cursor.style.left = cursorX + 'px';
-    cursor.style.top  = cursorY + 'px';
-  });
-
-  // Smooth ring follow
-  function animateCursorRing() {
-    ringX += (cursorX - ringX) * 0.12;
-    ringY += (cursorY - ringY) * 0.12;
-    cursorRing.style.left = ringX + 'px';
-    cursorRing.style.top  = ringY + 'px';
-    rafCursor = requestAnimationFrame(animateCursorRing);
-  }
-  animateCursorRing();
-
-  // Hover state
-  const hoverTargets = document.querySelectorAll(
-    'a, button, .btn, .gallery-item, .why-card, .service-card, .contact-card, .ig-item, .testimonial-dot, .testimonial-nav-btn, .lightbox-close, .lightbox-nav, #wa-float, #back-to-top'
-  );
-  hoverTargets.forEach(el => {
-    el.addEventListener('mouseenter', () => {
-      cursor?.classList.add('cursor-hover');
-      cursorRing?.classList.add('cursor-hover');
-    });
-    el.addEventListener('mouseleave', () => {
-      cursor?.classList.remove('cursor-hover');
-      cursorRing?.classList.remove('cursor-hover');
-    });
-  });
-
-  document.addEventListener('mouseleave', () => {
-    cursor.style.opacity = '0';
-    cursorRing.style.opacity = '0';
-  });
-  document.addEventListener('mouseenter', () => {
-    cursor.style.opacity = '1';
-    cursorRing.style.opacity = '1';
-  });
-}
 
 /* ─────────────────────────────────────────────
    SCROLL PROGRESS BAR
