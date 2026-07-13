@@ -8,10 +8,10 @@
 
 /* ── Design Tokens ── */
 :root {
-  --bg:           #0D0D0D;
-  --bg-primary:   #111111;
-  --bg-secondary: #1B1B1B;
-  --bg-card:      #161616;
+  --bg:           #44444A;
+  --bg-primary:   #3A3A40;
+  --bg-secondary: #2F2F35;
+  --bg-card:      #4D4D54;
   --gold:         #C9A227;
   --gold-light:   #E8C547;
   --gold-dim:     #a07d18;
@@ -402,7 +402,7 @@ button {
 
 #navbar.scrolled {
   padding: 12px 0;
-  background: rgba(13,13,13,0.92);
+  background: rgba(68, 68, 74, 0.92);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   box-shadow: 0 1px 0 var(--gold-border), 0 8px 32px rgba(0,0,0,0.5);
