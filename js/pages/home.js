@@ -15,9 +15,20 @@ document.addEventListener('DOMContentLoaded', () => {
 function initBeforeAfterSlider() {
   const container = document.querySelector('.ba-slider');
   const afterImage = document.querySelector('.ba-after');
+  const afterImgEl = afterImage?.querySelector('img');
   const handle = document.querySelector('.ba-handle');
   
-  if (!container || !afterImage || !handle) return;
+  if (!container || !afterImage || !handle || !afterImgEl) return;
+  
+  const resizeImages = () => {
+    const width = container.clientWidth;
+    afterImgEl.style.width = `${width}px`;
+  };
+  
+  window.addEventListener('resize', resizeImages);
+  // Run on load and after initial render
+  resizeImages();
+  setTimeout(resizeImages, 200);
   
   let isDragging = false;
   

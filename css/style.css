@@ -1422,6 +1422,8 @@ button {
   display: flex;
   gap: 20px;
   margin-bottom: 60px;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 .countdown-unit {
   width: 90px;
@@ -1670,6 +1672,12 @@ button {
 }
 
 @media (max-width: 768px) {
+  #navbar { padding: 18px 0; }
+  .nav-menu, .nav-right .btn-outline { display: none; }
+  .nav-hamburger { display: flex; }
+  .footer-grid { grid-template-columns: 1fr; }
+  .footer-bottom { flex-direction: column; text-align: center; }
+
   .timeline-wrap::before { left: 20px; }
   .timeline-item { width: 100%; padding-left: 50px; text-align: left !important; }
   .timeline-item.right { left: 0; }
@@ -1692,6 +1700,9 @@ button {
     width: 75px;
     padding: 12px;
   }
+  .ba-slider {
+    height: 380px;
+  }
 }
 
 @media (max-width: 580px) {
@@ -1704,5 +1715,8 @@ button {
   }
   .stats-grid {
     grid-template-columns: 1fr;
+  }
+  .ba-slider {
+    height: 280px;
   }
 }
