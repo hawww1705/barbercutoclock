@@ -5,36 +5,57 @@
         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 
   <url>
-    <loc>https://cutoclock.id/</loc>
-    <lastmod>2025-07-13</lastmod>
+    <loc>https://hawww1705.github.io/barbercutoclock/index.html</loc>
+    <lastmod>2026-07-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
 
   <url>
-    <loc>https://cutoclock.id/#about</loc>
-    <lastmod>2025-07-13</lastmod>
+    <loc>https://hawww1705.github.io/barbercutoclock/about.html</loc>
+    <lastmod>2026-07-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://cutoclock.id/#services</loc>
-    <lastmod>2025-07-13</lastmod>
-    <changefreq>monthly</changefreq>
+    <loc>https://hawww1705.github.io/barbercutoclock/services.html</loc>
+    <lastmod>2026-07-17</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
-    <loc>https://cutoclock.id/#gallery</loc>
-    <lastmod>2025-07-13</lastmod>
+    <loc>https://hawww1705.github.io/barbercutoclock/gallery.html</loc>
+    <lastmod>2026-07-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://cutoclock.id/#contact</loc>
-    <lastmod>2025-07-13</lastmod>
+    <loc>https://hawww1705.github.io/barbercutoclock/book.html</loc>
+    <lastmod>2026-07-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://hawww1705.github.io/barbercutoclock/promotions.html</loc>
+    <lastmod>2026-07-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://hawww1705.github.io/barbercutoclock/blog.html</loc>
+    <lastmod>2026-07-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://hawww1705.github.io/barbercutoclock/contact.html</loc>
+    <lastmod>2026-07-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>

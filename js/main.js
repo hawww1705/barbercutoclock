@@ -1,464 +1,187 @@
 /**
- * Cut O' Clock — Premium Barbershop
- * Main JavaScript: Interactions, Animations, and Components
+ * CUT O'CLOCK — Main JS
+ * Shared page functions, theme system, loader, scroll reveal.
  */
 
 'use strict';
 
-/* ─────────────────────────────────────────────
-   LOADING SCREEN
-───────────────────────────────────────────── */
-const loader = document.getElementById('loader');
-document.body.classList.add('loading');
-
-window.addEventListener('load', () => {
-  setTimeout(() => {
-    loader?.classList.add('hide');
-    document.body.classList.remove('loading');
-    // Trigger reveal animations AFTER loader hides (so animations are visible)
-    checkReveal();
-  }, 2000);
+document.addEventListener('DOMContentLoaded', () => {
+  initLoader();
+  initTheme();
+  initStickyNav();
+  initScrollReveal();
+  initScrollProgress();
+  initBackToTop();
+  initMobileNav();
 });
 
-
-/* ─────────────────────────────────────────────
-   SCROLL PROGRESS BAR
-───────────────────────────────────────────── */
-function updateScrollProgress() {
-  const scrollTop  = window.scrollY;
-  const docHeight  = document.documentElement.scrollHeight - window.innerHeight;
-  const progress   = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
-  document.documentElement.style.setProperty('--scroll-progress', progress + '%');
-}
-
-window.addEventListener('scroll', updateScrollProgress, { passive: true });
-
-/* ─────────────────────────────────────────────
-   NAVBAR
-───────────────────────────────────────────── */
-const navbar = document.getElementById('navbar');
-const hamburger = document.querySelector('.nav-hamburger');
-const navMobile = document.querySelector('.nav-mobile');
-const navOverlay = document.querySelector('.nav-mobile-overlay');
-
-function updateNavbar() {
-  if (window.scrollY > 60) {
-    navbar?.classList.add('scrolled');
-  } else {
-    navbar?.classList.remove('scrolled');
-  }
-
-  // Active link highlight
-  const sections = document.querySelectorAll('section[id]');
-  let current = '';
-  sections.forEach(sec => {
-    if (window.scrollY >= sec.offsetTop - 120) {
-      current = sec.getAttribute('id');
-    }
-  });
-  document.querySelectorAll('.nav-links a, .nav-mobile a').forEach(link => {
-    link.classList.remove('active');
-    if (link.getAttribute('href') === '#' + current) {
-      link.classList.add('active');
-    }
-  });
-}
-
-window.addEventListener('scroll', updateNavbar, { passive: true });
-updateNavbar();
-
-hamburger?.addEventListener('click', () => {
-  const isOpen = hamburger.classList.toggle('open');
-  hamburger.setAttribute('aria-expanded', String(isOpen));
-  navMobile?.classList.toggle('open', isOpen);
-  navOverlay?.classList.toggle('open', isOpen);
-  navOverlay?.setAttribute('aria-hidden', String(!isOpen));
-  document.body.style.overflow = isOpen ? 'hidden' : '';
-});
-
-navOverlay?.addEventListener('click', closeMenu);
-
-function closeMenu() {
-  hamburger?.classList.remove('open');
-  navMobile?.classList.remove('open');
-  navOverlay?.classList.remove('open');
-  document.body.style.overflow = '';
-}
-
-// Close mobile nav on link click
-document.querySelectorAll('.nav-mobile a').forEach(link => {
-  link.addEventListener('click', closeMenu);
-});
-
-/* ─────────────────────────────────────────────
-   SMOOTH SCROLL for nav links
-───────────────────────────────────────────── */
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function (e) {
-    const target = document.querySelector(this.getAttribute('href'));
-    if (target) {
-      e.preventDefault();
-      const navH = navbar?.offsetHeight || 70;
-      const top  = target.getBoundingClientRect().top + window.scrollY - navH;
-      window.scrollTo({ top, behavior: 'smooth' });
-    }
-  });
-});
-
-/* ─────────────────────────────────────────────
-   HERO PARALLAX + MOUSE LIGHT
-───────────────────────────────────────────── */
-const heroBg   = document.querySelector('.hero-bg');
-const heroLight = document.querySelector('.hero-mouse-light');
-const heroSection = document.getElementById('hero');
-
-window.addEventListener('scroll', () => {
-  if (heroBg) {
-    const y = window.scrollY;
-    heroBg.style.transform = `scale(1.08) translateY(${y * 0.3}px)`;
-  }
-}, { passive: true });
-
-if (heroSection && heroLight) {
-  heroSection.addEventListener('mousemove', (e) => {
-    const rect = heroSection.getBoundingClientRect();
-    heroLight.style.left = (e.clientX - rect.left) + 'px';
-    heroLight.style.top  = (e.clientY - rect.top)  + 'px';
-  });
-}
-
-/* ─────────────────────────────────────────────
-   SCROLL REVEAL (Intersection Observer)
-───────────────────────────────────────────── */
-const revealObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-      revealObserver.unobserve(entry.target);
-    }
-  });
-}, {
-  threshold: 0.12,
-  rootMargin: '0px 0px -40px 0px'
-});
-
-function checkReveal() {
-  document.querySelectorAll('.reveal, .reveal-group, .text-reveal, .img-reveal').forEach(el => {
-    revealObserver.observe(el);
-  });
-}
-
-// Note: checkReveal() is called after loader hides (see load event above)
-// This initial call handles elements already below the fold at page load
-// It runs immediately so observers are registered, but loader covers the page
-
-/* ─────────────────────────────────────────────
-   COUNT-UP ANIMATION
-───────────────────────────────────────────── */
-function countUp(el) {
-  const target = parseInt(el.dataset.count, 10);
-  const suffix = el.dataset.suffix || '';
-  const duration = 2000;
-  const step = target / (duration / 16);
-  let current = 0;
-
-  const timer = setInterval(() => {
-    current += step;
-    if (current >= target) {
-      current = target;
-      clearInterval(timer);
-    }
-    el.textContent = Math.floor(current).toLocaleString() + suffix;
-  }, 16);
-}
-
-const statsObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      const counters = entry.target.querySelectorAll('[data-count]');
-      counters.forEach(countUp);
-      statsObserver.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.3 });
-
-const statsSection = document.querySelector('.about-stats');
-if (statsSection) statsObserver.observe(statsSection);
-
-/* ─────────────────────────────────────────────
-   GALLERY LIGHTBOX
-───────────────────────────────────────────── */
-const lightbox    = document.getElementById('lightbox');
-const lightboxImg = document.getElementById('lightbox-img');
-const lbClose     = document.querySelector('.lightbox-close');
-const lbPrev      = document.querySelector('.lightbox-prev');
-const lbNext      = document.querySelector('.lightbox-next');
-
-let galleryImages = [];
-let currentLBIdx  = 0;
-
-function initGallery() {
-  galleryImages = Array.from(document.querySelectorAll('.gallery-item img'));
-  galleryImages.forEach((img, i) => {
-    img.closest('.gallery-item')?.addEventListener('click', () => openLightbox(i));
-  });
-}
-
-function openLightbox(idx) {
-  currentLBIdx = idx;
-  lightboxImg.src = galleryImages[idx].src;
-  lightbox?.classList.add('open');
-  document.body.style.overflow = 'hidden';
-}
-
-function closeLightbox() {
-  lightbox?.classList.remove('open');
-  document.body.style.overflow = '';
-}
-
-lbClose?.addEventListener('click', closeLightbox);
-lbPrev?.addEventListener('click', () => {
-  currentLBIdx = (currentLBIdx - 1 + galleryImages.length) % galleryImages.length;
-  lightboxImg.src = galleryImages[currentLBIdx].src;
-});
-lbNext?.addEventListener('click', () => {
-  currentLBIdx = (currentLBIdx + 1) % galleryImages.length;
-  lightboxImg.src = galleryImages[currentLBIdx].src;
-});
-
-lightbox?.addEventListener('click', (e) => {
-  if (e.target === lightbox) closeLightbox();
-});
-
-document.addEventListener('keydown', (e) => {
-  if (!lightbox?.classList.contains('open')) return;
-  if (e.key === 'Escape') closeLightbox();
-  if (e.key === 'ArrowLeft') lbPrev?.click();
-  if (e.key === 'ArrowRight') lbNext?.click();
-});
-
-initGallery();
-
-/* ─────────────────────────────────────────────
-   TESTIMONIALS CAROUSEL
-───────────────────────────────────────────── */
-const track     = document.querySelector('.testimonials-track');
-const slides    = document.querySelectorAll('.testimonial-slide');
-const dots      = document.querySelectorAll('.testimonial-dot');
-const prevBtn   = document.querySelector('.testimonial-prev');
-const nextBtn   = document.querySelector('.testimonial-next');
-
-let currentSlide = 0;
-let autoSlide;
-
-function goToSlide(n) {
-  currentSlide = (n + slides.length) % slides.length;
-  track.style.transform = `translateX(-${currentSlide * 100}%)`;
-  dots.forEach((d, i) => d.classList.toggle('active', i === currentSlide));
-}
-
-function startAutoSlide() {
-  autoSlide = setInterval(() => goToSlide(currentSlide + 1), 5000);
-}
-
-function resetAutoSlide() {
-  clearInterval(autoSlide);
-  startAutoSlide();
-}
-
-prevBtn?.addEventListener('click', () => { goToSlide(currentSlide - 1); resetAutoSlide(); });
-nextBtn?.addEventListener('click', () => { goToSlide(currentSlide + 1); resetAutoSlide(); });
-
-dots.forEach((dot, i) => {
-  dot.addEventListener('click', () => { goToSlide(i); resetAutoSlide(); });
-});
-
-// Touch swipe
-let touchStartX = 0;
-track?.addEventListener('touchstart', (e) => { touchStartX = e.touches[0].clientX; }, { passive: true });
-track?.addEventListener('touchend', (e) => {
-  const diff = touchStartX - e.changedTouches[0].clientX;
-  if (Math.abs(diff) > 50) {
-    diff > 0 ? goToSlide(currentSlide + 1) : goToSlide(currentSlide - 1);
-    resetAutoSlide();
-  }
-});
-
-if (slides.length > 0) {
-  goToSlide(0);
-  startAutoSlide();
-}
-
-/* ─────────────────────────────────────────────
-   BUTTON RIPPLE EFFECT
-───────────────────────────────────────────── */
-document.querySelectorAll('.btn, .booking-wa-btn').forEach(btn => {
-  btn.addEventListener('click', function (e) {
-    const rect = this.getBoundingClientRect();
-    const ripple = document.createElement('span');
-    ripple.className = 'ripple';
-    ripple.style.left = (e.clientX - rect.left) + 'px';
-    ripple.style.top  = (e.clientY - rect.top)  + 'px';
-    this.appendChild(ripple);
-    setTimeout(() => ripple.remove(), 700);
-  });
-});
-
-/* ─────────────────────────────────────────────
-   BACK TO TOP BUTTON
-───────────────────────────────────────────── */
-const backToTop = document.getElementById('back-to-top');
-
-window.addEventListener('scroll', () => {
-  backToTop?.classList.toggle('visible', window.scrollY > 500);
-}, { passive: true });
-
-backToTop?.addEventListener('click', () => {
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-});
-
-/* ─────────────────────────────────────────────
-   BENCHCODE DEV — FOOTER CONSTELLATION
-───────────────────────────────────────────── */
-function initConstellationStars() {
-  const starsContainer = document.querySelector('.footer-stars');
-  if (!starsContainer) return;
-
-  const footer = document.getElementById('footer');
-  const fW = footer.offsetWidth;
-  const fH = footer.offsetHeight;
-
-  const starCount = 80;
-  const stars = [];
-
-  for (let i = 0; i < starCount; i++) {
-    const star = document.createElement('div');
-    star.className = 'footer-star';
-
-    const size = Math.random() * 2.5 + 0.8;
-    const x = Math.random() * 100;
-    const y = Math.random() * 100;
-
-    star.style.cssText = `
-      width: ${size}px;
-      height: ${size}px;
-      left: ${x}%;
-      top: ${y}%;
-      opacity: ${Math.random() * 0.04 + 0.03};
-    `;
-
-    starsContainer.appendChild(star);
-    stars.push({ el: star, x, y, size });
-  }
-
-  // Draw constellation lines via SVG overlay
-  const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-  svg.style.cssText = `
-    position: absolute; inset: 0; width: 100%; height: 100%;
-    pointer-events: none; z-index: 0; opacity: 0.03;
-  `;
-
-  // Connect nearby stars
-  stars.forEach((s, i) => {
-    for (let j = i + 1; j < stars.length; j++) {
-      const dx = s.x - stars[j].x;
-      const dy = s.y - stars[j].y;
-      const dist = Math.sqrt(dx * dx + dy * dy);
-      if (dist < 14 && Math.random() > 0.5) {
-        const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
-        line.setAttribute('x1', s.x + '%');
-        line.setAttribute('y1', s.y + '%');
-        line.setAttribute('x2', stars[j].x + '%');
-        line.setAttribute('y2', stars[j].y + '%');
-        line.setAttribute('stroke', '#C9A227');
-        line.setAttribute('stroke-width', '0.5');
-        svg.appendChild(line);
+/* ── Loader Screen ── */
+function initLoader() {
+  const loader = document.getElementById('loader');
+  document.body.classList.add('loading');
+  
+  // Make sure loading animation finishes smoothly
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      if (loader) {
+        loader.classList.add('hide');
+        document.body.classList.remove('loading');
       }
-    }
+    }, 1500); // Give users a luxury loading experience
   });
-
-  starsContainer.appendChild(svg);
 }
 
-// Shooting star animation
-function triggerShootingStar() {
-  const footer = document.getElementById('footer');
-  if (!footer) return;
-
-  const star = document.createElement('div');
-  star.className = 'shooting-star';
-
-  const startX = Math.random() * 70;
-  const startY = Math.random() * 60;
-  const length = 80 + Math.random() * 120;
-
-  star.style.cssText = `
-    left: ${startX}%;
-    top:  ${startY}%;
-    width: ${length}px;
-  `;
-
-  footer.appendChild(star);
-  // Force reflow
-  void star.offsetWidth;
-  star.classList.add('active');
-
-  setTimeout(() => star.remove(), 1500);
+/* ── Light / Dark Mode System ── */
+function initTheme() {
+  const toggleBtn = document.getElementById('theme-toggle');
+  const storedTheme = localStorage.getItem('theme') || 'dark';
+  
+  if (storedTheme === 'light') {
+    document.body.classList.add('light-theme');
+    updateThemeIcon(true);
+  } else {
+    document.body.classList.remove('light-theme');
+    updateThemeIcon(false);
+  }
+  
+  if (toggleBtn) {
+    toggleBtn.addEventListener('click', () => {
+      const isLight = document.body.classList.toggle('light-theme');
+      localStorage.setItem('theme', isLight ? 'light' : 'dark');
+      updateThemeIcon(isLight);
+    });
+  }
 }
 
-function scheduleShootingStar() {
-  const delay = 15000 + Math.random() * 15000;
-  setTimeout(() => {
-    triggerShootingStar();
-    scheduleShootingStar();
-  }, delay);
+function updateThemeIcon(isLight) {
+  const toggleBtn = document.getElementById('theme-toggle');
+  if (!toggleBtn) return;
+  
+  // Gold moon and sun vector icons
+  if (isLight) {
+    toggleBtn.innerHTML = `
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+      </svg>
+    `;
+  } else {
+    toggleBtn.innerHTML = `
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="5"></circle>
+        <line x1="12" y1="1" x2="12" y2="3"></line>
+        <line x1="12" y1="21" x2="12" y2="23"></line>
+        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+        <line x1="1" y1="12" x2="3" y2="12"></line>
+        <line x1="21" y1="12" x2="23" y2="12"></line>
+        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+      </svg>
+    `;
+  }
 }
 
-// Init constellation after load
-window.addEventListener('load', () => {
-  initConstellationStars();
-  setTimeout(scheduleShootingStar, 5000);
-});
+/* ── Sticky Navbar ── */
+function initStickyNav() {
+  const navbar = document.getElementById('navbar');
+  if (!navbar) return;
+  
+  const handleScroll = () => {
+    if (window.scrollY > 50) {
+      navbar.classList.add('scrolled');
+    } else {
+      navbar.classList.remove('scrolled');
+    }
+  };
+  
+  window.addEventListener('scroll', handleScroll, { passive: true });
+  handleScroll();
+}
 
-/* ─────────────────────────────────────────────
-   LAZY LOADING IMAGES
-───────────────────────────────────────────── */
-const lazyImages = document.querySelectorAll('img[loading="lazy"]');
-if ('IntersectionObserver' in window) {
-  const imgObserver = new IntersectionObserver((entries) => {
+/* ── Scroll Reveal ── */
+function initScrollReveal() {
+  const observerOptions = {
+    threshold: 0.15,
+    rootMargin: '0px 0px -50px 0px'
+  };
+  
+  const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        const img = entry.target;
-        if (img.dataset.src) {
-          img.src = img.dataset.src;
-          img.removeAttribute('data-src');
-        }
-        imgObserver.unobserve(img);
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target); // Reveal once
       }
     });
-  });
-  lazyImages.forEach(img => imgObserver.observe(img));
+  }, observerOptions);
+  
+  const elements = document.querySelectorAll('.reveal, .reveal-group, .img-reveal');
+  elements.forEach(el => observer.observe(el));
 }
 
-/* ─────────────────────────────────────────────
-   SECTION MOUSE GLOW (About)
-───────────────────────────────────────────── */
-const aboutSection = document.getElementById('about');
-if (aboutSection) {
-  aboutSection.addEventListener('mousemove', (e) => {
-    const rect = aboutSection.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    aboutSection.style.setProperty('--mouse-x', x + 'px');
-    aboutSection.style.setProperty('--mouse-y', y + 'px');
+/* ── Scroll Progress Bar ── */
+function initScrollProgress() {
+  const handleScroll = () => {
+    const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+    if (totalHeight <= 0) return;
+    const progress = (window.scrollY / totalHeight) * 100;
+    document.documentElement.style.setProperty('--scroll-progress', `${progress}%`);
+  };
+  
+  window.addEventListener('scroll', handleScroll, { passive: true });
+  handleScroll();
+}
+
+/* ── Back to Top ── */
+function initBackToTop() {
+  const btn = document.getElementById('back-to-top');
+  if (!btn) return;
+  
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 400) {
+      btn.classList.add('visible');
+    } else {
+      btn.classList.remove('visible');
+    }
+  }, { passive: true });
+  
+  btn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 }
 
-/* ─────────────────────────────────────────────
-   NAVBAR LINK UPDATES ON RESIZE
-───────────────────────────────────────────── */
-window.addEventListener('resize', () => {
-  if (window.innerWidth > 768) {
-    closeMenu();
-  }
-});
+/* ── Mobile Navigation Drawer ── */
+function initMobileNav() {
+  const hamburger = document.getElementById('hamburger');
+  const drawer = document.getElementById('mobile-drawer');
+  
+  if (!hamburger || !drawer) return;
+  
+  hamburger.addEventListener('click', () => {
+    const isOpen = drawer.classList.toggle('open');
+    hamburger.classList.toggle('active', isOpen);
+    
+    // Toggle active lines for hamburger button animation
+    const spans = hamburger.querySelectorAll('span');
+    if (isOpen) {
+      spans[0].style.transform = 'translateY(7px) rotate(45deg)';
+      spans[1].style.opacity = '0';
+      spans[2].style.transform = 'translateY(-7px) rotate(-45deg)';
+    } else {
+      spans[0].style.transform = 'none';
+      spans[1].style.opacity = '1';
+      spans[2].style.transform = 'none';
+    }
+  });
+  
+  // Close menu on link click
+  const links = drawer.querySelectorAll('a');
+  links.forEach(link => {
+    link.addEventListener('click', () => {
+      drawer.classList.remove('open');
+      const spans = hamburger.querySelectorAll('span');
+      spans[0].style.transform = 'none';
+      spans[1].style.opacity = '1';
+      spans[2].style.transform = 'none';
+    });
+  });
+}

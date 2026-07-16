@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <title>Blog Magazine — Cut O'Clock Barbershop</title>
+  <meta name="description" content="Kumpulan tips perawatan rambut pria, tren gaya rambut terbaru, dan rekomendasi produk pomade terbaik di Cut O'Clock Semarang.">
+  <link rel="icon" type="image/png" href="images/logo.png">
+  
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ─── Scroll Progress Bar ─── -->
+  <div id="scroll-progress" aria-hidden="true"></div>
+
+  <!-- ─── Loading Screen ─── -->
+  <div id="loader" role="status" aria-label="Loading">
+    <img src="images/logo.png" alt="Cut O'Clock Logo" class="loader-logo">
+    <div class="loader-text">Cut O'Clock</div>
+    <div class="loader-bar-wrap">
+      <div class="loader-bar"></div>
+    </div>
+  </div>
+
+  <!-- ─── Navigation Header ─── -->
+  <header id="navbar" role="banner">
+    <div class="container nav-inner">
+      <a href="index.html" class="logo-link" aria-label="Cut O'Clock Home">
+        <img src="images/logo.png" alt="Logo Cut O'Clock" class="logo-img">
+        <div class="logo-text">
+          Cut O'Clock
+          <span>Premium Barbershop</span>
+        </div>
+      </a>
+      
+      <nav class="nav-menu" aria-label="Main Navigation" role="navigation">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="services.html">Services</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="promotions.html">Promotions</a>
+        <a href="blog.html" class="active">Blog</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      
+      <div class="nav-right">
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle light/dark theme"></button>
+        <a href="book.html" class="btn btn-outline" style="padding: 10px 24px;">Book Now</a>
+        <button id="hamburger" class="nav-hamburger" aria-label="Open mobile menu" aria-expanded="false" aria-controls="mobile-drawer">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div id="mobile-drawer" class="mobile-nav" aria-label="Mobile Navigation">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="services.html">Services</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="promotions.html">Promotions</a>
+    <a href="blog.html" class="active">Blog</a>
+    <a href="contact.html">Contact</a>
+    <a href="book.html" class="btn btn-primary" style="margin-top: 20px;">Book Now</a>
+  </div>
+
+  <main>
+    <!-- ─── Subpage Hero ─── -->
+    <section class="subpage-hero" aria-labelledby="blog-hero-title">
+      <div class="container">
+        <h1 id="blog-hero-title" class="subpage-hero-title">Grooming <span>Magazine</span></h1>
+      </div>
+    </section>
+
+    <!-- ─── Blog Magazine Section ─── -->
+    <section class="container" style="padding: 80px 0 100px;">
+      <!-- Search & Filters -->
+      <div class="search-filter-wrap reveal">
+        <div class="search-box">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input type="text" id="search-articles" placeholder="Cari artikel...">
+        </div>
+        
+        <div class="filters-list" role="tablist" aria-label="Blog categories">
+          <button class="filter-btn blog-filter-btn active" role="tab" aria-selected="true" data-filter="all">Semua</button>
+          <button class="filter-btn blog-filter-btn" role="tab" aria-selected="false" data-filter="haircare">Hair Care</button>
+          <button class="filter-btn blog-filter-btn" role="tab" aria-selected="false" data-filter="trends">Trends</button>
+          <button class="filter-btn blog-filter-btn" role="tab" aria-selected="false" data-filter="products">Products</button>
+        </div>
+      </div>
+
+      <!-- Articles Grid -->
+      <div class="blog-grid reveal-group">
+        <!-- Article 1 -->
+        <article class="article-card glass-panel" data-category="haircare">
+          <div class="article-img-wrap">
+            <img src="images/gallery-4.jpg" alt="Tips Perawatan Rambut">
+          </div>
+          <div class="article-info">
+            <div class="article-meta">
+              <span>HAIR CARE</span>
+              <span>15 Juli 2026</span>
+            </div>
+            <h3 class="article-title">Cara Merawat Rambut & Kulit Kepala Pria agar Sehat</h3>
+            <p class="article-excerpt">Kulit kepala pria cenderung memproduksi sebum lebih banyak. Simak langkah mencuci rambut dan pemakaian kondisioner yang benar di sini.</p>
+            <div class="article-footer">
+              <span>Oleh: Barber Alex</span>
+              <span>⏱️ 5 Menit Baca</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Article 2 -->
+        <article class="article-card glass-panel" data-category="trends">
+          <div class="article-img-wrap">
+            <img src="images/gallery-6.jpg" alt="Tren Gaya Rambut Pria">
+          </div>
+          <div class="article-info">
+            <div class="article-meta">
+              <span>TRENDS</span>
+              <span>10 Juli 2026</span>
+            </div>
+            <h3 class="article-title">5 Tren Gaya Rambut Pria Terpopuler di Tahun 2026</h3>
+            <p class="article-excerpt">Dari potongan French Crop bertekstur, Mullet modern, hingga Skin Fade presisi. Temukan gaya rambut terbaik yang cocok untuk karakter Anda.</p>
+            <div class="article-footer">
+              <span>Oleh: Barber Dani</span>
+              <span>⏱️ 4 Menit Baca</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Article 3 -->
+        <article class="article-card glass-panel" data-category="products">
+          <div class="article-img-wrap">
+            <img src="images/gallery-8.jpg" alt="Rekomendasi Pomade">
+          </div>
+          <div class="article-info">
+            <div class="article-meta">
+              <span>PRODUCTS</span>
+              <span>05 Juli 2026</span>
+            </div>
+            <h3 class="article-title">Panduan Memilih Pomade, Clay, atau Wax Rambut</h3>
+            <p class="article-excerpt">Bingung memilih produk penataan rambut? Pahami perbedaan daya rekat (hold) dan tingkat kilau (shine) masing-masing produk penata rambut di sini.</p>
+            <div class="article-footer">
+              <span>Oleh: Barber Hendra</span>
+              <span>⏱️ 6 Menit Baca</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <!-- ─── Floating WhatsApp Button ─── -->
+  <a id="wa-float" href="https://wa.me/6281548946625?text=Halo%20Cut%20O'Clock,%20saya%20ingin%20booking%20jadwal" target="_blank" rel="noopener noreferrer" aria-label="Hubungi kami melalui WhatsApp">
+    <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor" style="color: #ffffff;">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+    </svg>
+  </a>
+
+  <!-- ─── Back to Top ─── -->
+  <button id="back-to-top" aria-label="Kembali ke atas">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="18 15 12 9 6 15"></polyline>
+    </svg>
+  </button>
+
+  <!-- ─── Footer ─── -->
+  <footer id="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo-link">
+            <img src="images/logo.png" alt="Cut O'Clock Logo" class="logo-img">
+            <span class="logo-text">Cut O'Clock</span>
+          </a>
+          <p>Pengalaman grooming pria eksklusif, modern, dan presisi tinggi di Semarang Utara.</p>
+        </div>
+        <div>
+          <h4 class="footer-title">Halaman</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-title">Jam Buka</h4>
+          <ul class="footer-links" style="color: var(--text-muted); font-size: 0.9rem;">
+            <li style="margin-bottom: 8px;">Senin - Minggu</li>
+            <li>09.00 - 21.00 WIB</li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-title">Kontak</h4>
+          <ul class="footer-contact">
+            <li>
+              <span>📍</span>
+              Jl. Telaga Mas Raya No.B10, Panggung Lor, Semarang Utara
+            </li>
+            <li>
+              <span>📞</span>
+              0815-4894-6625
+            </li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; 2026 Cut O'Clock. All rights reserved.</p>
+        <p>Crafted with precision by BenchCode Dev</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/main.js"></script>
+  <script src="js/pages/blog.js"></script>
+</body>
+</html>

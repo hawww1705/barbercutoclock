@@ -1,9 +1,5 @@
 User-agent: *
 Allow: /
 
-# Sitemap
-Sitemap: https://cutoclock.id/sitemap.xml
-
-# Disallow admin areas
-Disallow: /admin/
-Disallow: /private/
+# Sitemap Location
+Sitemap: https://hawww1705.github.io/barbercutoclock/sitemap.xml

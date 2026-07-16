@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <title>Gallery — Cut O'Clock Barbershop</title>
+  <meta name="description" content="Lihat hasil potongan rambut fade, undercut, pompadour, serta suasana interior eksklusif Cut O'Clock Barbershop Semarang.">
+  <link rel="icon" type="image/png" href="images/logo.png">
+  
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ─── Scroll Progress Bar ─── -->
+  <div id="scroll-progress" aria-hidden="true"></div>
+
+  <!-- ─── Loading Screen ─── -->
+  <div id="loader" role="status" aria-label="Loading">
+    <img src="images/logo.png" alt="Cut O'Clock Logo" class="loader-logo">
+    <div class="loader-text">Cut O'Clock</div>
+    <div class="loader-bar-wrap">
+      <div class="loader-bar"></div>
+    </div>
+  </div>
+
+  <!-- ─── Navigation Header ─── -->
+  <header id="navbar" role="banner">
+    <div class="container nav-inner">
+      <a href="index.html" class="logo-link" aria-label="Cut O'Clock Home">
+        <img src="images/logo.png" alt="Logo Cut O'Clock" class="logo-img">
+        <div class="logo-text">
+          Cut O'Clock
+          <span>Premium Barbershop</span>
+        </div>
+      </a>
+      
+      <nav class="nav-menu" aria-label="Main Navigation" role="navigation">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="services.html">Services</a>
+        <a href="gallery.html" class="active">Gallery</a>
+        <a href="promotions.html">Promotions</a>
+        <a href="blog.html">Blog</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      
+      <div class="nav-right">
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle light/dark theme"></button>
+        <a href="book.html" class="btn btn-outline" style="padding: 10px 24px;">Book Now</a>
+        <button id="hamburger" class="nav-hamburger" aria-label="Open mobile menu" aria-expanded="false" aria-controls="mobile-drawer">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div id="mobile-drawer" class="mobile-nav" aria-label="Mobile Navigation">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="services.html">Services</a>
+    <a href="gallery.html" class="active">Gallery</a>
+    <a href="promotions.html">Promotions</a>
+    <a href="blog.html">Blog</a>
+    <a href="contact.html">Contact</a>
+    <a href="book.html" class="btn btn-primary" style="margin-top: 20px;">Book Now</a>
+  </div>
+
+  <main>
+    <!-- ─── Subpage Hero ─── -->
+    <section class="subpage-hero" aria-labelledby="gallery-hero-title">
+      <div class="container">
+        <h1 id="gallery-hero-title" class="subpage-hero-title">Portfolio <span>Gallery</span></h1>
+      </div>
+    </section>
+
+    <!-- ─── Gallery Section ─── -->
+    <section class="container gallery-section" style="padding-top: 60px;">
+      <!-- Category Filter -->
+      <div class="reveal" style="text-align: center; margin-bottom: 40px;">
+        <div class="filters-list" style="justify-content: center;" role="tablist" aria-label="Gallery categories">
+          <button class="filter-btn gallery-filter-btn active" role="tab" aria-selected="true" data-filter="all">Semua</button>
+          <button class="filter-btn gallery-filter-btn" role="tab" aria-selected="false" data-filter="haircuts">Haircuts</button>
+          <button class="filter-btn gallery-filter-btn" role="tab" aria-selected="false" data-filter="interior">Interior</button>
+          <button class="filter-btn gallery-filter-btn" role="tab" aria-selected="false" data-filter="barbers">Barbers & Tools</button>
+        </div>
+      </div>
+
+      <!-- Masonry Grid -->
+      <div class="gallery-masonry reveal-group">
+        <div class="gallery-item" data-category="haircuts">
+          <img src="images/gallery-1.jpg" alt="Skin Fade Haircut">
+          <div class="gallery-item-overlay">
+            <div class="gallery-item-title">Premium Skin Fade</div>
+          </div>
+        </div>
+
+        <div class="gallery-item" data-category="interior">
+          <img src="images/about-interior.jpg" alt="Barbershop Interior Lounge">
+          <div class="gallery-item-overlay">
+            <div class="gallery-item-title">Exlusif Lounge Room</div>
+          </div>
+        </div>
+
+        <div class="gallery-item" data-category="haircuts">
+          <img src="images/gallery-6.jpg" alt="Undercut Styling">
+          <div class="gallery-item-overlay">
+            <div class="gallery-item-title">Textured Undercut</div>
+          </div>
+        </div>
+
+        <div class="gallery-item" data-category="barbers">
+          <img src="images/gallery-5.jpg" alt="Barber at Work">
+          <div class="gallery-item-overlay">
+            <div class="gallery-item-title">Precision Cutting</div>
+          </div>
+        </div>
+
+        <div class="gallery-item" data-category="haircuts">
+          <img src="images/gallery-3.jpg" alt="Classic Pompadour">
+          <div class="gallery-item-overlay">
+            <div class="gallery-item-title">Classic Pompadour</div>
+          </div>
+        </div>
+
+        <div class="gallery-item" data-category="barbers">
+          <img src="images/gallery-2.jpg" alt="Barbershop Tools">
+          <div class="gallery-item-overlay">
+            <div class="gallery-item-title">Professional Styling Tools</div>
+          </div>
+        </div>
+
+        <div class="gallery-item" data-category="interior">
+          <img src="images/gallery-7.jpg" alt="Waiting Area">
+          <div class="gallery-item-overlay">
+            <div class="gallery-item-title">Waiting Area & Minibar</div>
+          </div>
+        </div>
+
+        <div class="gallery-item" data-category="haircuts">
+          <img src="images/gallery-4.jpg" alt="Beard Grooming">
+          <div class="gallery-item-overlay">
+            <div class="gallery-item-title">Beard Trim & Care</div>
+          </div>
+        </div>
+
+        <div class="gallery-item" data-category="interior">
+          <img src="images/hero-cut.jpg" alt="Studio Light Setup">
+          <div class="gallery-item-overlay">
+            <div class="gallery-item-title">Barber Chairs Studio</div>
+          </div>
+        </div>
+
+        <div class="gallery-item" data-category="barbers">
+          <img src="images/gallery-9.jpg" alt="Razor Shave">
+          <div class="gallery-item-overlay">
+            <div class="gallery-item-title">Classic Shave Process</div>
+          </div>
+        </div>
+
+        <div class="gallery-item" data-category="interior">
+          <img src="images/gallery-8.jpg" alt="Styling Products">
+          <div class="gallery-item-overlay">
+            <div class="gallery-item-title">Premium Grooming Products</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Lightbox Overlay -->
+    <div id="lightbox" role="dialog" aria-label="Image Lightbox" aria-modal="true">
+      <button class="lightbox-close" aria-label="Tutup lightbox">×</button>
+      <button class="lightbox-nav lightbox-prev" aria-label="Foto sebelumnya">‹</button>
+      <img id="lightbox-img" src="" alt="">
+      <button class="lightbox-nav lightbox-next" aria-label="Foto berikutnya">›</button>
+    </div>
+  </main>
+
+  <!-- ─── Floating WhatsApp Button ─── -->
+  <a id="wa-float" href="https://wa.me/6281548946625?text=Halo%20Cut%20O'Clock,%20saya%20ingin%20booking%20jadwal" target="_blank" rel="noopener noreferrer" aria-label="Hubungi kami melalui WhatsApp">
+    <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor" style="color: #ffffff;">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+    </svg>
+  </a>
+
+  <!-- ─── Back to Top ─── -->
+  <button id="back-to-top" aria-label="Kembali ke atas">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="18 15 12 9 6 15"></polyline>
+    </svg>
+  </button>
+
+  <!-- ─── Footer ─── -->
+  <footer id="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo-link">
+            <img src="images/logo.png" alt="Cut O'Clock Logo" class="logo-img">
+            <span class="logo-text">Cut O'Clock</span>
+          </a>
+          <p>Pengalaman grooming pria eksklusif, modern, dan presisi tinggi di Semarang Utara.</p>
+        </div>
+        <div>
+          <h4 class="footer-title">Halaman</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-title">Jam Buka</h4>
+          <ul class="footer-links" style="color: var(--text-muted); font-size: 0.9rem;">
+            <li style="margin-bottom: 8px;">Senin - Minggu</li>
+            <li>09.00 - 21.00 WIB</li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-title">Kontak</h4>
+          <ul class="footer-contact">
+            <li>
+              <span>📍</span>
+              Jl. Telaga Mas Raya No.B10, Panggung Lor, Semarang Utara
+            </li>
+            <li>
+              <span>📞</span>
+              0815-4894-6625
+            </li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; 2026 Cut O'Clock. All rights reserved.</p>
+        <p>Crafted with precision by BenchCode Dev</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/main.js"></script>
+  <script src="js/pages/gallery.js"></script>
+</body>
+</html>

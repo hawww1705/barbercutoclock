@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <title>Book Appointment — Cut O'Clock Barbershop</title>
+  <meta name="description" content="Booking jadwal potong rambut pria secara online di Cut O'Clock Barbershop Semarang. Pilih tanggal, jam, dan barber pilihan Anda.">
+  <link rel="icon" type="image/png" href="images/logo.png">
+  
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ─── Scroll Progress Bar ─── -->
+  <div id="scroll-progress" aria-hidden="true"></div>
+
+  <!-- ─── Loading Screen ─── -->
+  <div id="loader" role="status" aria-label="Loading">
+    <img src="images/logo.png" alt="Cut O'Clock Logo" class="loader-logo">
+    <div class="loader-text">Cut O'Clock</div>
+    <div class="loader-bar-wrap">
+      <div class="loader-bar"></div>
+    </div>
+  </div>
+
+  <!-- ─── Navigation Header ─── -->
+  <header id="navbar" role="banner">
+    <div class="container nav-inner">
+      <a href="index.html" class="logo-link" aria-label="Cut O'Clock Home">
+        <img src="images/logo.png" alt="Logo Cut O'Clock" class="logo-img">
+        <div class="logo-text">
+          Cut O'Clock
+          <span>Premium Barbershop</span>
+        </div>
+      </a>
+      
+      <nav class="nav-menu" aria-label="Main Navigation" role="navigation">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="services.html">Services</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="promotions.html">Promotions</a>
+        <a href="blog.html">Blog</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      
+      <div class="nav-right">
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle light/dark theme"></button>
+        <a href="book.html" class="btn btn-primary" style="padding: 10px 24px;">Book Now</a>
+        <button id="hamburger" class="nav-hamburger" aria-label="Open mobile menu" aria-expanded="false" aria-controls="mobile-drawer">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div id="mobile-drawer" class="mobile-nav" aria-label="Mobile Navigation">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="services.html">Services</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="promotions.html">Promotions</a>
+    <a href="blog.html">Blog</a>
+    <a href="contact.html">Contact</a>
+    <a href="book.html" class="btn btn-primary" style="margin-top: 20px;">Book Now</a>
+  </div>
+
+  <main>
+    <!-- ─── Subpage Hero ─── -->
+    <section class="subpage-hero" aria-labelledby="book-hero-title">
+      <div class="container">
+        <h1 id="book-hero-title" class="subpage-hero-title">Book <span>Appointment</span></h1>
+      </div>
+    </section>
+
+    <!-- ─── Booking Grid Section ─── -->
+    <section class="container" style="padding-bottom: 80px;">
+      <div class="booking-grid">
+        <!-- Form Left -->
+        <div class="booking-form-wrap reveal reveal-left">
+          <span class="section-tag">Booking Form</span>
+          <h2 class="section-heading" style="font-size: 2.2rem; margin-bottom: 30px;">Detail <span>Kunjungan</span></h2>
+          
+          <form id="booking-form" class="reveal-group">
+            <div class="form-group">
+              <label for="book-name">Nama Lengkap</label>
+              <input type="text" id="book-name" required placeholder="Contoh: Budi Pratama">
+            </div>
+            
+            <div class="form-group">
+              <label for="book-phone">Nomor WhatsApp</label>
+              <input type="tel" id="book-phone" required placeholder="Contoh: 081234567890">
+            </div>
+            
+            <div class="form-group">
+              <label for="book-email">Alamat Email</label>
+              <input type="email" id="book-email" required placeholder="Contoh: budi@gmail.com">
+            </div>
+            
+            <div class="form-group">
+              <label for="book-barber">Pilih Barber</label>
+              <select id="book-barber" required>
+                <option value="" disabled selected>Pilih salah satu...</option>
+                <option value="Alex Wijaya (Senior Master Barber)">Alex Wijaya (Senior Master Barber)</option>
+                <option value="Hendra Kusuma (Grooming Expert)">Hendra Kusuma (Grooming Expert)</option>
+                <option value="Dani Setiawan (Creative Stylist)">Dani Setiawan (Creative Stylist)</option>
+              </select>
+            </div>
+            
+            <div class="form-group">
+              <label for="book-service">Pilih Layanan</label>
+              <select id="book-service" required>
+                <option value="" disabled selected>Pilih salah satu...</option>
+                <option value="Premium Haircut (Rp 35.000)">Premium Haircut (Rp 35.000)</option>
+                <option value="Modern Skin Fade (Rp 45.000)">Modern Skin Fade (Rp 45.000)</option>
+                <option value="Signature Beard Trim (Rp 25.000)">Signature Beard Trim (Rp 25.000)</option>
+                <option value="Royal Hot Towel Shave (Rp 35.000)">Royal Hot Towel Shave (Rp 35.000)</option>
+                <option value="Hair Spa & Head Massage (Rp 50.000)">Hair Spa & Head Massage (Rp 50.000)</option>
+                <option value="Premium Hair Coloring (Rp 120.000)">Premium Hair Coloring (Rp 120.000)</option>
+                <option value="Executive Grooming Package (Rp 85.000)">Executive Grooming Package (Rp 85.000)</option>
+              </select>
+            </div>
+            
+            <div class="form-group">
+              <label for="book-notes">Catatan Tambahan (Opsional)</label>
+              <textarea id="book-notes" rows="4" placeholder="Misal: Punya kulit sensitif, dll."></textarea>
+            </div>
+            
+            <button type="submit" class="btn btn-primary" style="margin-top: 20px;">Lanjutkan Booking</button>
+          </form>
+        </div>
+
+        <!-- Interactive Calendar Right -->
+        <div class="booking-calendar-wrap reveal reveal-right">
+          <span class="section-tag">Date & Time Selection</span>
+          <h2 class="section-heading" style="font-size: 2.2rem; margin-bottom: 30px;">Pilih <span>Jadwal</span></h2>
+          
+          <div class="calendar-box glass-panel">
+            <div class="cal-month-wrap">
+              <button type="button" class="cal-nav-btn cal-prev" aria-label="Bulan sebelumnya">‹</button>
+              <div class="cal-month-title">Juli 2026</div>
+              <button type="button" class="cal-nav-btn cal-next" aria-label="Bulan berikutnya">›</button>
+            </div>
+            
+            <div class="cal-weekdays">
+              <div>Sen</div><div>Sel</div><div>Rab</div><div>Kam</div><div>Jum</div><div>Sab</div><div>Min</div>
+            </div>
+            
+            <div class="cal-days">
+              <!-- Rendered via JS -->
+            </div>
+          </div>
+          
+          <h3 class="slots-title">Jam Yang Tersedia</h3>
+          <div class="slots-grid">
+            <!-- Rendered via JS -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Confirmation Modal -->
+    <div id="confirmation-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <div class="modal-box glass-panel reveal reveal-scale">
+        <h3 id="modal-title" class="modal-title">Konfirmasi Booking</h3>
+        
+        <div class="summary-list">
+          <div class="summary-item">
+            <span>Nama:</span>
+            <span id="summary-name">-</span>
+          </div>
+          <div class="summary-item">
+            <span>Telepon:</span>
+            <span id="summary-phone">-</span>
+          </div>
+          <div class="summary-item">
+            <span>Layanan:</span>
+            <span id="summary-service">-</span>
+          </div>
+          <div class="summary-item">
+            <span>Barber:</span>
+            <span id="summary-barber">-</span>
+          </div>
+          <div class="summary-item">
+            <span>Tanggal:</span>
+            <span id="summary-date">-</span>
+          </div>
+          <div class="summary-item">
+            <span>Waktu:</span>
+            <span id="summary-time">-</span>
+          </div>
+        </div>
+        
+        <div class="modal-btns">
+          <button type="button" class="btn btn-outline modal-close">Batal</button>
+          <button type="button" id="confirm-booking" class="btn btn-primary">Kirim via WA</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- ─── Footer ─── -->
+  <footer id="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo-link">
+            <img src="images/logo.png" alt="Cut O'Clock Logo" class="logo-img">
+            <span class="logo-text">Cut O'Clock</span>
+          </a>
+          <p>Pengalaman grooming pria eksklusif, modern, dan presisi tinggi di Semarang Utara.</p>
+        </div>
+        <div>
+          <h4 class="footer-title">Halaman</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-title">Jam Buka</h4>
+          <ul class="footer-links" style="color: var(--text-muted); font-size: 0.9rem;">
+            <li style="margin-bottom: 8px;">Senin - Minggu</li>
+            <li>09.00 - 21.00 WIB</li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-title">Kontak</h4>
+          <ul class="footer-contact">
+            <li>
+              <span>📍</span>
+              Jl. Telaga Mas Raya No.B10, Panggung Lor, Semarang Utara
+            </li>
+            <li>
+              <span>📞</span>
+              0815-4894-6625
+            </li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; 2026 Cut O'Clock. All rights reserved.</p>
+        <p>Crafted with precision by BenchCode Dev</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/main.js"></script>
+  <script src="js/pages/book.js"></script>
+</body>
+</html>
